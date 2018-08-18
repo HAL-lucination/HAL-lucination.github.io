@@ -1,28 +1,99 @@
-<!DOCTYPE html><html prefix="og: http://ogp.me/ns#"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title>Hello World · Hexo</title><meta name="description" content="Hello World - Vincent Feng"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="//at.alicdn.com/t/font_1472710214_6648843.css"><link rel="stylesheet" href="//raw.githack.com/xwartz/hexo-theme-nuna/next/source/style/main.css?v=1.0.3"></head><body class="pupa"><div class="loading-bar"></div><main><div class="post post"><article itemscope itemtype="http://schema.org/Article" class="hentry"><div class="container"><div class="entry-header"><h1 class="entry-title">Hello World</h1><div class="entry-description"></div><div class="entry-meta"><time itemprop="datePublished" datetime="Saturday, August 18th 2018, 9:33:08 pm" class="updated">Aug 18, 2018</time><em class="post-count">376 words</em></div></div><div itemprop="articleBody" class="entry-content"><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-</div><div class="entry-extra"><div class="entry-tags"></div></div></div></article></div></main><footer><div class="copyright container"><p>© Copyright 2018 by <a href="https:/vincentfeng.me">Vincent Feng</a>.</p></div></footer><script async src="//cdn.bootcss.com/mathjax/2.7.0-beta.0/MathJax.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-69822347-1",'auto');
-ga('set', 'appName',"Hexo");
-ga('send','pageview');</script><script>(function () { var sid =500303098;cid =500303108;var hm = document.createElement('script');
-hm.src = 'http://pingjs.qq.com/h5/stats.js';
-hm.setAttribute('name', 'MTAH5'); hm.setAttribute('sid', sid); hm.setAttribute('cid', cid);
-var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);
-}())</script><script>var _vds = _vds || [];
-window._vds = _vds;
-(function(){
-  ;_vds.push(['setAccountId',"90b580e047dd0007"  ]);
-  (function() {
-      var vds = document.createElement('script');
-      vds.type='text/javascript';
-      vds.async = true;
-      vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(vds, s);
-  })();
-})();</script><script async src="//raw.githack.com/Easyfood/pageAccelerator/master/dist/page-accelerator.min.js"></script><script async src="/script/loading.js"></script><script async src="/script/photo.js"></script></body></html>
+extends includes/layout.pug
+
+block top_img
+  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
+  if (top_img && page.top_img !== false)
+    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
+    - var flag = top_img === true ? 'no-bg' : ''
+    div#top-container(style=bg_img class=flag)
+      include ./includes/header.pug
+      #post-info
+        #post-title= page.title || _p('no_title')
+        #post-meta
+          if (theme.post_meta.date_type)
+            - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
+            time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+          if (theme.post_meta.categories && page.categories.data.length > 0)
+            if (theme.post_meta.date_type)
+              span.post-meta__separator |
+            each item, index in page.categories.data
+              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
+              a(href=url_for(item.path)).post-meta__categories #[=item.name]
+              if (index < page.categories.data.length - 1)
+                 i.fa.fa-angle-right(aria-hidden="true")
+          if (theme.disqus.enable && theme.disqus.count)
+            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+              span.post-meta__separator |
+            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
+            a(href=url_for(page.path) + '#disqus_thread')
+              span.disqus-comment-count(data-disqus-identifier=page.path)
+          if (theme.wordcount && theme.wordcount.enable)
+            .post-meta-wordcount
+              span= _p('post.wordcount') + ': '
+              span.word-count= wordcount(page.content)
+              span.post-meta__separator |
+              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+  else
+    div#top-container.plain
+      include ./includes/header.pug
+
+block content
+  article#post(class="")
+    if (!top_img)
+      #post-title.plain= page.title || _p('no_title')
+      #post-meta
+        if (theme.post_meta.date_type)
+          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
+          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+        if (theme.post_meta.categories && page.categories.data.length > 0)
+          if (theme.post_meta.date_type)
+            span.post-meta__separator |
+          each item, index in page.categories.data
+            i.fa.fa-inbox(aria-hidden="true")
+            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
+            if (index < page.categories.data.length - 1)
+                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
+        if (theme.disqus.enable && theme.disqus.count)
+          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+            span.post-meta__separator |
+          i.fa.fa-comment-o(aria-hidden="true")
+          a(href=url_for(page.path) + '#disqus_thread')
+            span.disqus-comment-count(data-disqus-identifier=page.path)
+        if (theme.wordcount && theme.wordcount.enable)
+          span.post-meta__separator |
+          span.post-meta-wordcount
+            span= _p('post.wordcount') + ': '
+            span.word-count= wordcount(page.content)
+            span.post-meta__separator |
+            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+    #post-content.article-container!= page.content
+  if (theme.post_copyright && theme.post_copyright.enable)
+    .post-copyright
+      .post-copyright__author
+        span.post-copyright-meta= _p('post.copyright.author') + ": "
+        span.post-copyright-info
+          a(href=`mailto:${config.email}`) #[=config.author]
+      .post-copyright__type
+        span.post-copyright-meta= _p('post.copyright.link') + ": "
+        span.post-copyright-info
+          a(href=url_for(page.permalink)) #[=page.permalink]
+      .post-copyright__notice
+        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
+        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
+  if (theme.post_meta.tags)
+    .post-meta__tag-list
+      each item, index in page.tags.data
+        a(href=url_for(item.path)).post-meta__tags #[=item.name]
+  if (theme.QR_code)
+    if (theme.QR_code.length > 0)
+      .post-qr-code
+        each item in theme.QR_code
+          .post-qr-code-item
+            img.post-qr-code__img(src=(item.itemlist||item).img)
+            .post-qr-code__desc=(item.itemlist||item).text
+  include includes/share/index.pug
+  include includes/pagination.pug
+  if (theme.adv && theme.adv.enable)
+    .post-adv!= theme.adv.info
+  if page.comments !== false
+    include includes/comments/index.pug
