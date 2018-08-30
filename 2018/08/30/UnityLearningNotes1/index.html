@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>UnityFundamentals | Vincent Feng&#39;s Homepage</title>
+  <title>Unity Learning Notes 1 Making a Simplest Maze | Vincent Feng&#39;s Homepage</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,30 +173,67 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2018-08-29T14:06:08.000Z" itemprop="datePublished">
-          2018-08-29
+      <time datetime="2018-08-30T03:00:00.000Z" itemprop="datePublished">
+          2018-08-30
       </time>
     
+    
+    | 
+    <a href='/tags/Unity-Tutorials/'>Unity, Tutorials</a>
+    
+    
 </span>
-                <h1>UnityFundamentals</h1>
+                <h1>Unity Learning Notes 1 Making a Simplest Maze</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>This is the initial post!<br>Commands for generating and deploying posts are reserved in this post.</p>
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+      		<p><img src="https://udemy-images.udemy.com/course/750x422/1210008_6859.jpg" alt="Unity Logo"></p>
+<p>As one of the most popular editor/engine to create games, Unity 3D is really suitable for starters because of simplicity and wide support from the community. If the user run into a problem, there mostly exists more than 3 ways to solve it, and they are all few clicks away just by copying &amp; pasting the error to Google.</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>In this series, I would like to take some memo of the tricky steps I met with during the process of creating things. This can be potentially usefully for my own later reference.</p>
+<p>In this first post of Unity learning notes series, I would like to talk about making a very simple 2D/3D maze without any extra package, the result is shown below in the embedded WebGL player. I am currently using Unity 2017.4.0f1. Most steps should be identical for Unity 5.</p>
+<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
+<li>Create the level using cubes with desired dimensions, or use blender to make a solid 3D model to drag into the Unity editor instead. For the purpose of simplicity, we just use basic shapes provided by Unity this time. After the shape is finished, create an Materials folder under Assets folder, and create a new material for the stage. In my case, I used Legacy Shaders/Diffuse and chose a grey-ish color as the main screen.<ul>
+<li><em>Attention</em>: The transform should definitely be taken great care of. In my case, I decided to use the unit of 1.00, and then adjust positions of all objects based on this step. Therefore it will be whole lot easier to mess around will placements or objects, and it will prevent us from getting into wired issues such as player getting stuck in some invisible holes or gaps.</li>
+<li><em>Attention 2</em>: Create an empty and drop all stage related objects into this parent, so we can focus on player, enemy and other stuff.</li>
+<li><em>Attention 3</em>: Never forget to create a material at first, and then it apply to the desired object. Also, modifying the material directly will affect all objects with that material, so if you want to create colorful stages in different levels as I wanted to do, I suggest create materials such as LevelOneStage, LevelTwoStage, etc.</li>
+</ul>
+</li>
+</ol>
+<p><img src="images/1.png" alt="stage design"></p>
+<ol start="2">
+<li>Prepare the player and the goal object. The shape can be arbitrary, however, in order to avoid the problem of rotation, I chose the sphere as my player and give it another material to stand out from the stage.</li>
+</ol>
+<p>In this step, we define the movement of the player by attaching a new script called “PlayerMovement.cs” to the player object. We firstly want to make the player ball respond to keyboard input, to roll to the direction when we press down the corresponding arrow key.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class PlayerMovement : MonoBehaviour &#123;</span><br><span class="line">    public float moveSpeed; // Define a force of acceleration when we press down the key.</span><br><span class="line">    private Vector3 input; // Read the keyboard input.</span><br><span class="line">    public float maxSpeed; // Define a max speed for the player.</span><br><span class="line"></span><br><span class="line">    void Update()</span><br><span class="line">        &#123;</span><br><span class="line">            var rb = this.GetComponent&lt;Rigidbody&gt;(); // We use rigidbody to handle the physics.</span><br><span class="line">            input = new Vector3(Input.GetAxis(&quot;Horizontal&quot;), 0, Input.GetAxis(&quot;Vertical&quot;)); // Deliver the raw keyboard input to the vector &quot;input&quot; we defined here. Since we only want the ball to make 2D moves, the y axis is always 0.</span><br><span class="line">            if (rb.velocity.magnitude &lt; maxSpeed)</span><br><span class="line">            &#123;</span><br><span class="line">                rb.AddForce(input * moveSpeed); // Addforce can push the ball to the direction we want.</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em>Attention</em>: Don’t forget to attach rigidbody, and (sphere) collider to the object. If there is no rigidbody, the ball can fall straight down through the floor. The collider is necessary for later hit detection.</li>
+<li><em>Attention 2</em>: Since we defined the moveSpeed and maxSpeed as public values, we need to manually type in the desired values we want to user in the Inspector panel before running the scene.</li>
+<li><em>Attention 3</em>: If something is not working, check the Edit - Project Settings - Input to see if key bindings are using “Horizontal” and “Vertical”.</li>
+</ul>
+<ol start="3">
+<li>Before continue to write scripts for the goal object, we firstly need to duplicate the whole scene, in my case I named it “Level 1”, as a new scene “Level 2”. Then we modify the stage design of “Level 2” by adding some walls, obstacles, etc.</li>
+</ol>
+<p><img src="images/2.png" alt="stage 2 design"></p>
+<p>Then, under File - Build Settings… press the “Add Open Scenes” one by one from the first scene to the last scene. It should be like this:</p>
+<p><img src="images/3.png" alt="add scenes"></p>
+<p>Then we can start writing the level changing script that change the level for us when the player touches the goal. Open up the “PlayerMovement.cs” we created before, and add the following scripts:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">   &#123;</span><br><span class="line">    ...</span><br><span class="line">    private void OnTriggerEnter(Collider other) // Called when collided with other colliders.</span><br><span class="line">       &#123;</span><br><span class="line">           if (other.transform.tag == &quot;Goal&quot;) // If collided with an object with &quot;Goal&quot; tag.</span><br><span class="line">           &#123;</span><br><span class="line">               GameManager.CompleteLevel(); // Call the CompleteLevel() function under GameManager.</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   ...</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>Since we need to call the CompleteLevel() function under GameManager, we need to firstly create an empty object called “GameManager” in the scene, and attach a new script “GameManager.cs” to it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class GameManager : MonoBehaviour &#123;</span><br><span class="line">    public static int currentLevel = 0; // The first level is essentially Level 0 to Unity, so we start the counter from 0.</span><br><span class="line">    public static void CompleteLevel()</span><br><span class="line">    &#123;</span><br><span class="line">        currentLevel++; // Once the player touches the goal, the level counter plus one,</span><br><span class="line">        Application.LoadLevel(currentLevel);// and load the next level.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Once the scripts are taken care of, we need to add the “Goal” tag to the goal object in the inspector panel.</p>
+<p><img src="images/4.png" alt="add tag"><br>Voila! Test it out to see if you can switch between stages.</p>
+<ol start="3">
+<li>Save all stuff for the next time.</li>
+</ol>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2018/08/30/UnityLearningNotes1/" style="float: left;">
-        ← Unity Learning Notes 1 Making a Simplest Maze
-    </a>
     
-    
-    <a class="pull-right" href="/2018/08/18/hello-world/">
-        Hello World →
+    <a class="pull-right" href="/2018/08/29/UnityFundamentals/">
+        UnityFundamentals →
     </a>
     
 </nav>
