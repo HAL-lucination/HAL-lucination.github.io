@@ -206,6 +206,7 @@
 </ul>
 </li>
 </ol>
+<br/>            
 <p><img src="images/1.png" alt="stage design"></p>
 <br/>
 <ol start="2">
@@ -230,12 +231,13 @@
 <p>Since we need to call the CompleteLevel() function under GameManager, we need to firstly create an empty object called “GameManager” in the scene, and attach a new script “GameManager.cs” to it.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class GameManager : MonoBehaviour &#123;</span><br><span class="line">    public static int currentLevel = 0; // The first level is essentially Level 0 to Unity, so we start the counter from 0.</span><br><span class="line">    public static void CompleteLevel()</span><br><span class="line">    &#123;</span><br><span class="line">        currentLevel++; // Once the player touches the goal, the level counter plus one,</span><br><span class="line">        Application.LoadLevel(currentLevel);// and load the next level.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Once the scripts are taken care of, we need to add the “Goal” tag to the goal object in the inspector panel.</p>
-<p><img src="images/4.png" alt="add tag"><br><br><em>Voila! Test it out to see if you can switch between stages.</em></p>
+<p><center><img src="images/4.png" alt="add tag"></center></p>
+              <p><br><br><em>Voila! Test it out to see if you can switch between stages.</em></p>
 <h3 id="Save-all-stuff-for-the-next-time"><a href="#Save-all-stuff-for-the-next-time" class="headerlink" title="Save all stuff for the next time."></a>Save all stuff for the next time.</h3>
 <br/>
 <br/>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2>
-<div id="gameContainer" style="width: 1100px; height: 480px; margin: auto"></div>
+<div id="gameContainer" style="width: 770px; height: 336px;"></div>
 <br/>
             <div class="clearfix"></div>
             <hr class="nogutter">
