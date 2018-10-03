@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Unity Study Notes 3 Importing MMD models into Unity | Vincent Feng&#39;s Homepage</title>
+  <title>About Me | Vincent Feng&#39;s Homepage</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -167,125 +167,115 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2><span style="color:white">Whereof one cannot speak, thereof one must be <span>silent</span>.</span></h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p><span style="color:white">对于我们不能言说的,必须保持缄默。</span></p>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
+    </div>
+</section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
 <section id="intro">
     <div class="container">
         <div class="row col-md-offset-2">
             <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2018-09-03T12:00:00.000Z" itemprop="datePublished">
-          2018-09-03
-      </time>
-    
-    
-    | 
-    <a href='/tags/Unity/'>Unity</a>,
-    
-    <a href='/tags/Tutorials/'>Tutorials</a>,
-    
-    <a href='/tags/Game-Making-Journey/'>Game Making Journey</a>,
-    
-    <a href='/tags/MMD/'>MMD</a>
-    
-    
-</span>
-                <h1>Unity Study Notes 3 Importing MMD models into Unity</h1>
+                <h1>About Me</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Most games, such as Action RPG, platform games, fighting games, include multiple characters or avatars in game for players to control. It is true that there are a lot of well made character models available in the Unity asset store, but free ones with high quality is rather rare.</p>
-<p>To make our game vivid and fun, a good looking avatar can provide great advantages, since no one want to see boring soldiers running around for hours and hours, right? (Yeah, I am talking about you, free soldier asset featured in countless tutorials.)<br>However, designing a new <em>Humanoid</em> character from scratch using modeling softwares such as Maya or Blender for beginners like me is not actually realistic, since the process of systematically learning modeling, rigging and generate lightmaps etc. to create a appealing model is as difficult, if not harder, as making a good game.</p>
-<p>Therefore, since I have messed around with MMD (<a href="https://en.wikipedia.org/wiki/MikuMikuDance" target="_blank" rel="noopener">MikuMikuDance</a>) for some time when I was still in high school, I am kind of familiar with it. Anyway, such prior knowledge is not a must for taking advantage of the well-community-supported, open-sourced library of humanoid models.</p>
-<p><img src="https://renote.jp/uploads/image/file/36566/MMD.jpg" alt="MMDExample"></p>
-<p>In this note, I will elaborate the steps form obtaining .pmx model files to make the models moving in Unity editor.</p>
-<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
-<li><strong>Grab a preferred .pmx model file.</strong> First of all, we need to prepare a free MMD model for us to use in later steps. There are different sources and it is impossible to cover them all in this post, so I will just give a simple example. Hundreds of models are available on <a href="https://www6.atwiki.jp/vpvpwiki/pages/141.html#id_eb1ae7d0" target="_blank" rel="noopener">this site</a>, along with different motion animations, so if you want to also apply these complex animations to your character, it is also easy to convert MMD-compatible animation format <em>.vmd</em> into Unity-compatible format <em>.fbx</em>.<br>Anyway, download a MMD model according to your preference and upzip it to get the <em>.pmx</em> file. This is what we need in this step.<br><img src="images/pmx.png" alt="pmx"></li>
-</ol>
-<ol start="2">
-<li><strong>Get the MMD4Mecanim plugin.</strong> To convert .pmx models into .fbx file, the key is this MMD4Mecanim plugin. It is available at <a href="http://stereoarts.jp" target="_blank" rel="noopener">this link</a>. Scroll down to find the download link. Currently it’s version is beta_20180523, just find the “MMD4Mecanim_Beta_20180523.zip”, click the link and you should be good to go. After the download is finished, uncompress it to get this “<em>MMD4Mecanim.unitypackage</em>“ file, and import it into Unity editor.</li>
-</ol>
-<p><img src="images/mmd4.png" alt="mmd4dmecanim"></p>
-<ol start="3">
-<li><strong>Convert the .pmx model into Unity compatible .fbx file.</strong> Once the MMD4Mecanim package is imported into the Unity editor, create a new “<em>model</em>“ folder under <em>Assets</em> and copy the <em>.pmx</em> file obtained in the step 1 into the folder. (This is an optional step, just to make things look clean and tidy. You can place the model file anywhere you prefer.) Since we have already imported the MMD4Mecanim package, there should be another <em>your_model_name.MMD4Mecanim.asset</em> automatically created under the same directory. Click that asset and look at the inspector panel, there should be some checkboxes and an “<em>Agree</em>“ button. After carefully reading the notices from the model author (another <strong>Optional</strong> step), press the “<em>Agree</em>“ button, and click the “<em>Process</em>“ button on the next page. After some waiting, you should see the <em>.fbx</em> file automatically generated under the same directory.</li>
-</ol>
-<ul>
-<li><p><strong>Attention</strong>: If you want to attach some motion animations along with the model without the harassment for manually preparing an animator controller by yourself afterwards, you need to drag the <em>.vmd</em> file (Also available on that website.) to the VMD slot before pressing the “<em>Process</em>“ button.</p>
-</li>
-<li><p><strong>Attention</strong>: If you want to attach some <strong>humanoid motion animations</strong> when messing around with the model, make sure the <em>Animation Type</em> under the <em>Rig</em> page of that model is changed to <em>Humanoid</em>. (It is set to <em>Generic</em> by default.) Or the humanoid motion clips you gathered from somewhere else won’t work on this model. I spent some time to figure this out when firstly using this plugin.</p>
-</li>
-</ul>
-<p><img src="images/Humanoid.png" alt="Humanoid"></p>
-<h3 id="GOODJOB"><a href="#GOODJOB" class="headerlink" title="GOODJOB!"></a>GOODJOB!</h3><p>Now we can use the imported character to do different things and create kaleidoscopic games! Next time I will write about how to incorporate our own character in the newly released powerful Unity 3D Game Kit.</p>
+            <p>I’m Vincent Feng, a <em>passionate</em> tech enthusiast, and currently a second year graduate student studying applied physics, especially image processing with machine learning at Waseda University.<br><br></p>
+<p>Love to use emerging deep learning techniques to make some fun applications on mobile platforms. (Touhou Character recognizer!) Some of my projects are released on my Github page, feel free to mess around!<br><br></p>
+<p>I also make some casual VR/AR games with Unity3D during leisure time as a hobby (3D platforms, driving, etc.) During work time, I try to improve and solve some problems with current XR systems for better user experience.<br><br></p>
+<p>By the way, I am finding jobs after graduation. I Have a strong passion for games and the game industry with the love of making contributions to the community. Seeking new challenges and have the ambition to craft unique, attractive games with new technologies in an extraordinary team. <strong>If you have interest, please don’t hesitate to contact me!</strong></p>
 
             <div class="clearfix"></div>
-            <hr class="nogutter">
         </div>
-        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    <a class="pull-left" href="/2018/09/12/CodingExercises1/" style="float: left;">
-        ← Coding Exercises 1 Regular Expression
-    </a>
-    
-    
-    <a class="pull-right" href="/2018/09/01/UnityStudyNotes2/">
-        Unity Study Notes 2 Making a basic AR labyrinth →
-    </a>
-    
-</nav>
-
-        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
-  /**
-   * 搜狐畅言
-   */
-
-  /*
-  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
-
-  window.onload = function () {
-    (function () {
-      var appid = 'cytXXXX';
-      var conf = 'prod_xxxxxxxxxxxxxxxxx';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      var loadJs = function (d, a, id) {
-        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        var b = document.createElement("script");
-        b.setAttribute("type", "text/javascript");
-        b.setAttribute("charset", "UTF-8");
-        b.setAttribute("src", d);
-        if (id) {
-          b.setAttribute("id", id);
-        }
-        if (typeof a === "function") {
-          if (window.attachEvent) {
-            b.onreadystatechange = function () {
-              var e = b.readyState;
-              if (e === "loaded" || e === "complete") {
-                b.onreadystatechange = null;
-                a()
-              }
-            }
-          } else {
-            b.onload = a
-          }
-        }
-        c.appendChild(b)
-      };
-
-      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
-        window.changyan.api.config({
-          appid: appid,
-          conf: conf
-        })
-      });
-    })();
-  }
-  */
-
-</script>
-</div>
+        
     </div>
 </section>
-
+<section id="process">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                <div class="timeline-centered">
+                    <div class="line"></div>
+                    <div class="present">Past</div>
+                    <div class="dot_tp"></div>
+                    <div class="born">Now</div>
+                    <div class="dot_bt"></div>
+                    
+                        <div class="timeline-entry">
+                            <div class="timeline-entry-inner">
+                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
+                                    <span class="number">1</span>
+                                </div>
+                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
+                                    <p>2014/06/12-Start</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="timeline-entry">
+                            <div class="timeline-entry-inner">
+                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
+                                    <span class="number">2</span>
+                                </div>
+                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
+                                    <p>2014/11/29-XXX</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="timeline-entry">
+                            <div class="timeline-entry-inner">
+                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
+                                    <span class="number">3</span>
+                                </div>
+                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
+                                    <p>2015/02/18-DDD</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="timeline-entry">
+                            <div class="timeline-entry-inner">
+                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
+                                    <span class="number">4</span>
+                                </div>
+                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
+                                    <p>More</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+                <!-- timeline-centered -->
+            </div>
+        </div>
+    </div>
+</section>
 
       
 <!-- ============================ Footer =========================== -->
