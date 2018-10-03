@@ -32,9 +32,9 @@
 
     <link rel="alternate" href="/atom.xml" title="Vincent Feng&#39;s Homepage" type="application/atom+xml">
     <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    
+
     <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
-    
+
 
     <!--[if IE 8]>
     <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
@@ -51,11 +51,11 @@
     <script src="/js/respond.min.js"></script>
     <![endif]-->
 
-  
-  
+
+
   <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
-  
-  
+
+
 
   <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 </head>
@@ -76,38 +76,38 @@
             <li><a href="/" class="animsition-link" title="Home">Home</a></li>
             <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
             <!-- Dropdown Menu -->
-			 
-            
+
+
         	<li>
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
-				  	
+
 				    <li><a href="/categories/Study-Notes/" class="animsition-link">Study Notes<small>(5)</small></a></li>
-				    
+
 				    <li><a href="/categories/Web-Related/" class="animsition-link">Web Related<small>(1)</small></a></li>
-				    
+
 				</ul>
         	</li>
-			
-            
+
+
             <li>
                 <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
-                    
+
                     <li><a href="http://www.mlab.phys.waseda.ac.jp/" class="animsition-link">Morishima Lab</a></li>
-                    
+
                 </ul>
             </li>
-            
+
         </ul>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu secondary">
-            
+
             <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
             <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
         </ul>
     </div>
-    
+
     <!-- ============================ END Off-canvas navigation =========================== -->
 
     <!-- ============================ #sb-site Main Page Wrapper =========================== -->
@@ -123,7 +123,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/>
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -132,21 +132,21 @@
                         <ul class="nav">
                             <li><a href="/" class="animsition-link">Vincent Feng's Homepage</a></li>
                             <li class="nolink"><span>Always </span>Creative.</li>
-                            
+
                             <li><a href="https://github.com/HAL-lucination" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            
-                            
+
+
                             <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
-                            
-                            
+
+
                             <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
-                            
-                            
+
+
                             <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
-                            
-                            
+
+
                             <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
-                            
+
                             <li class="nolink"><span>Welcome!</span></li>
                         </ul>
                     </nav>
@@ -167,7 +167,7 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      
+
 <section id="intro">
     <div class="container">
         <div class="row col-md-offset-2">
@@ -176,29 +176,27 @@
       <time datetime="2018-09-03T12:00:00.000Z" itemprop="datePublished">
           2018-09-03
       </time>
-    
-    
-    | 
-    <a href='/tags/Unity/'>Unity</a>,
-    
-    <a href='/tags/Tutorials/'>Tutorials</a>,
-    
-    <a href='/tags/Game-Making-Journey/'>Game Making Journey</a>,
-    
-    <a href='/tags/MMD/'>MMD</a>
-    
-    
+
+
+      <a href='/tags/Unity/'>Unity</a>,
+
+      <a href='/tags/Tutorials/'>Tutorials</a>,
+
+      <a href='/tags/Game-Making-Journey/'>Game Making Journey</a>
+
+
+
 </span>
-                <h1>Unity Study Notes 3 Importing MMD models into Unity</h1>
+                <h1>Unity Study Notes 3 </br> Importing MMD models into Unity</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Most games, such as Action RPG, platform games, fighting games, include multiple characters or avatars in game for players to control. It is true that there are a lot of well made character models available in the Unity asset store, but free ones with high quality is rather rare.</p>
+      		<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2></br><p>Most games, such as Action RPG, platform games, fighting games, include multiple characters or avatars in game for players to control. It is true that there are a lot of well made character models available in the Unity asset store, but free ones with high quality is rather rare.</p>
 <p>To make our game vivid and fun, a good looking avatar can provide great advantages, since no one want to see boring soldiers running around for hours and hours, right? (Yeah, I am talking about you, free soldier asset featured in countless tutorials.)<br>However, designing a new <em>Humanoid</em> character from scratch using modeling softwares such as Maya or Blender for beginners like me is not actually realistic, since the process of systematically learning modeling, rigging and generate lightmaps etc. to create a appealing model is as difficult, if not harder, as making a good game.</p>
-<p>Therefore, since I have messed around with MMD (<a href="https://en.wikipedia.org/wiki/MikuMikuDance" target="_blank" rel="noopener">MikuMikuDance</a>) for some time when I was still in high school, I am kind of familiar with it. Anyway, such prior knowledge is not a must for taking advantage of the well-community-supported, open-sourced library of humanoid models.</p>
+<p>Therefore, since I have messed around with MMD (<a href="https://en.wikipedia.org/wiki/MikuMikuDance" target="_blank" rel="noopener">MikuMikuDance</a>) for some time when I was still in high school, I am kind of familiar with it. Anyway, such prior knowledge is not a must for taking advantage of the well-community-supported, open-sourced library of humanoid models.</p></br>
 <p><img src="https://renote.jp/uploads/image/file/36566/MMD.jpg" alt="MMDExample"></p>
-<p>In this note, I will elaborate the steps form obtaining .pmx model files to make the models moving in Unity editor.</p>
-<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
+</br><p>In this note, I will elaborate the steps form obtaining .pmx model files to make the models moving in Unity editor.</p>
+</br><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
 <li><strong>Grab a preferred .pmx model file.</strong> First of all, we need to prepare a free MMD model for us to use in later steps. There are different sources and it is impossible to cover them all in this post, so I will just give a simple example. Hundreds of models are available on <a href="https://www6.atwiki.jp/vpvpwiki/pages/141.html#id_eb1ae7d0" target="_blank" rel="noopener">this site</a>, along with different motion animations, so if you want to also apply these complex animations to your character, it is also easy to convert MMD-compatible animation format <em>.vmd</em> into Unity-compatible format <em>.fbx</em>.<br>Anyway, download a MMD model according to your preference and upzip it to get the <em>.pmx</em> file. This is what we need in this step.<br><img src="images/pmx.png" alt="pmx"></li>
 </ol>
 <ol start="2">
@@ -215,22 +213,18 @@
 </li>
 </ul>
 <p><img src="images/Humanoid.png" alt="Humanoid"></p>
-<h3 id="GOODJOB"><a href="#GOODJOB" class="headerlink" title="GOODJOB!"></a>GOODJOB!</h3><p>Now we can use the imported character to do different things and create kaleidoscopic games! Next time I will write about how to incorporate our own character in the newly released powerful Unity 3D Game Kit.</p>
+</br><h3 id="GOODJOB"><a href="#GOODJOB" class="headerlink" title="GOODJOB!"></a>GOODJOB!</h3><p>Now we can use the imported character to do different things and create kaleidoscopic games! Next time I will write about how to incorporate our own character in the newly released powerful Unity 3D Game Kit.</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    <a class="pull-left" href="/2018/09/12/CodingExercises1/" style="float: left;">
-        ← Coding Exercises 1 Regular Expression
-    </a>
-    
-    
+
+
     <a class="pull-right" href="/2018/09/01/UnityStudyNotes2/">
         Unity Study Notes 2 Making a basic AR labyrinth →
     </a>
-    
+
 </nav>
 
         <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
@@ -287,7 +281,7 @@
 </section>
 
 
-      
+
 <!-- ============================ Footer =========================== -->
 
 <footer>
@@ -296,25 +290,25 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Vincent Feng. All Rights Reserved.
                 </p>
-                <!-- <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p> -->
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
-                    
+
                     <li><a href="https://github.com/HAL-lucination" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-                    
-                    
+
+
                     <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
-                    
-                    
+
+
                     <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
-                    
-                    
+
+
                     <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
-                    
-                    
+
+
                     <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
-                    
+
                 </ul>
             </div>
             <div class="clearfix"> </div>
@@ -322,7 +316,6 @@
 </footer>
 
 <!-- ============================ END Footer =========================== -->
-
       <!-- Load our scripts -->
 <!-- Resizable 'on-demand' full-height hero -->
 <script type="text/javascript">
@@ -363,6 +356,6 @@ $('#intro').find('img').each(function(){
 
 
 
-      
+
 </body>
 </html>
